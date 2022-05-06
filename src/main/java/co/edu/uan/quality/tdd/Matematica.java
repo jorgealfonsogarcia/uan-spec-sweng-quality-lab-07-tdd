@@ -35,7 +35,14 @@ public class Matematica {
         return a - b;
     }
 
+    /**
+     * Multiplica dos números enteros.
+     *
+     * @param a Primer número entero.
+     * @param b Segundo número entero.
+     * @return La multiplicación de los números enteros.
+     */
     public int multiplicar(int a, int b) {
-        return Integer.MAX_VALUE;
+        return a * b;
     }
 }
