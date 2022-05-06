@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Test para Matematica
@@ -41,5 +42,16 @@ class MatematicaTest {
     void testMultiplicar() {
         final int resultado = matematica.multiplicar(5, 6);
         assertEquals(30, resultado);
+    }
+
+    @Test
+    void testDividir() throws DivisionPorCeroException {
+        final int resultado = matematica.dividir(23, 8);
+        assertEquals(2, resultado);
+    }
+
+    @Test
+    void testDividirPorCero() {
+        assertThrows(DivisionPorCeroException.class, () -> matematica.dividir(54, 0));
     }
 }
