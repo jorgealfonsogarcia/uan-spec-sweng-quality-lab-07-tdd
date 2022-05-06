@@ -10,6 +10,7 @@ package co.edu.uan.quality.tdd;
  * @version 1.0
  * @since 11
  */
+@SuppressWarnings("SpellCheckingInspection")
 public class Matematica {
 
     /**
@@ -23,7 +24,14 @@ public class Matematica {
         return a + b;
     }
 
+    /**
+     * Resta dos números enteros.
+     *
+     * @param a Primer número entero.
+     * @param b Segundo número entero.
+     * @return La resta de los números enteros.
+     */
     public int restar(int a, int b) {
-        return Integer.MIN_VALUE;
+        return a - b;
     }
 }
