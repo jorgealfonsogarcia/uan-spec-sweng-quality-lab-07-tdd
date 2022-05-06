@@ -1,5 +1,6 @@
 package co.edu.uan.quality.tdd;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,12 +15,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @version 1.0
  * @since 11
  */
+@SuppressWarnings("SpellCheckingInspection")
 class MatematicaTest {
+
+    private Matematica matematica;
+
+    @BeforeEach
+    void setUp() {
+        matematica = new Matematica();
+    }
 
     @Test
     void testSuma() {
-        Matematica matematica = new Matematica();
         final int resultado = matematica.sumar(1, 2);
         assertEquals(3, resultado);
+    }
+
+    @Test
+    void testRestar() {
+        final int resultado = matematica.restar(4, 3);
+        assertEquals(1, resultado);
     }
 }
