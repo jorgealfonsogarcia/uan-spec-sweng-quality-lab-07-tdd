@@ -1,5 +1,7 @@
 package co.edu.uan.quality.tdd;
 
+import static java.lang.String.format;
+
 /**
  * Operaciones matemáticas.
  *
@@ -46,7 +48,19 @@ public class Matematica {
         return a * b;
     }
 
+    /**
+     * Divide dos números enteros.
+     *
+     * @param a Primer número entero.
+     * @param b Segundo número entero.
+     * @return La division entera de los números enteros.
+     * @throws DivisionPorCeroException En caso que b sea cero.
+     */
     public int dividir(int a, int b) throws DivisionPorCeroException {
-        return Integer.MAX_VALUE;
+        try {
+            return a / b;
+        } catch (ArithmeticException e) {
+            throw new DivisionPorCeroException(a, b, e);
+        }
     }
 }
