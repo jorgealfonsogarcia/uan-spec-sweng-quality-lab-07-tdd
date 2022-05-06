@@ -36,4 +36,10 @@ class MatematicaTest {
         final int resultado = matematica.restar(4, 3);
         assertEquals(1, resultado);
     }
+
+    @Test
+    void testMultiplicar() {
+        final int resultado = matematica.multiplicar(5, 6);
+        assertEquals(30, resultado);
+    }
 }
