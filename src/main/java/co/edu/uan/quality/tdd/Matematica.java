@@ -1,7 +1,5 @@
 package co.edu.uan.quality.tdd;
 
-import static java.lang.String.format;
-
 /**
  * Operaciones matemáticas.
  *

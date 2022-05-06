@@ -1,5 +1,6 @@
 package co.edu.uan.quality.tdd;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Locale;
@@ -22,22 +23,38 @@ public class Main {
 
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
+    /**
+     * Método principal
+     *
+     * @param args Argumentos del sistema. Se esperan: [SUM|RES|MUL|DIV] PRIMER_OPERANDO SEGUNDO_OPERANDO
+     */
     public static void main(String[] args) {
+        if (ArrayUtils.isEmpty(args)) {
+            LOGGER.severe("NO HAY ARGUMENTOS DEL PROGRAMA.");
+            return;
+        }
+
+        final int expectedLength = 3;
+        if (args.length != expectedLength) {
+            LOGGER.log(Level.SEVERE, "DEBEN SER {0} ARGUMENTOS DEL PROGRAMA.", expectedLength);
+            return;
+        }
+
         final String argOperacion = args[0];
         if (StringUtils.isBlank(argOperacion)) {
-            // TODO: Error
+            LOGGER.severe("DEBE INDICAR LA OPERACION.");
             return;
         }
 
         final String argA = args[1];
         if (StringUtils.isBlank(argA)) {
-            // TODO: Error
+            LOGGER.severe("DEBE INDICAR EL PRIMER OPERANDO.");
             return;
         }
 
         final String argB = args[2];
         if (StringUtils.isBlank(argB)) {
-            // TODO: Error
+            LOGGER.severe("DEBE INDICAR EL SEGUNDO OPERANDO.");
             return;
         }
 
@@ -45,7 +62,7 @@ public class Main {
         try {
             operacion = Operacion.valueOf(argOperacion.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException e) {
-            // TODO: Error
+            LOGGER.log(Level.SEVERE, "LA OPERACION INDICADA NO ES VALIDA: {0}", argOperacion);
             return;
         }
 
@@ -53,7 +70,7 @@ public class Main {
         try {
             a = Integer.parseInt(argA);
         } catch (NumberFormatException e) {
-            // TODO: Error
+            LOGGER.log(Level.SEVERE, "EL PRIMER OPERANDO NO ES VALIDO: {0}", argA);
             return;
         }
 
@@ -61,7 +78,7 @@ public class Main {
         try {
             b = Integer.parseInt(argB);
         } catch (NumberFormatException e) {
-            // TODO: Error
+            LOGGER.log(Level.SEVERE, "EL SEGUNDO OPERANDO NO ES VALIDO: {0}", argB);
             return;
         }
 
@@ -85,6 +102,7 @@ public class Main {
             case DIV:
                 return new Matematica().dividir(a, b);
             default:
+                // Esto nunca debería ejecutarse.
                 return Integer.MIN_VALUE;
         }
     }
